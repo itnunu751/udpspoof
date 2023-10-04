@@ -1,0 +1,8 @@
+from scapy.all import *
+
+eth = Ether()
+ip = IP(src='10.2.4.10', dst='172.16.44.1')
+udp = UDP(sport=13333,dport=13337)
+payload = "172.16.44.6"
+packet = eth/ip/udp/payload
+sendp(packet, iface="tap0")
